@@ -145,3 +145,4 @@ dmypy.json
 
 # vscode docker container
 .devcontainer
+.vscode
