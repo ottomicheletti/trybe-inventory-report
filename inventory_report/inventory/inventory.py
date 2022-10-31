@@ -1,6 +1,7 @@
 import os
 import csv
 import json
+import xmltodict
 from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
 
@@ -11,6 +12,10 @@ exts = {
         lambda inventory: list(inventory),
     ],
     ".json": [lambda file: json.load(file), lambda inventory: inventory],
+    ".xml": [
+        lambda file: file.read(),
+        lambda inventory: xmltodict.parse(inventory)["dataset"]["record"],
+    ],
 }
 
 
